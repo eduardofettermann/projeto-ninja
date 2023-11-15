@@ -8,6 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Ninja {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
