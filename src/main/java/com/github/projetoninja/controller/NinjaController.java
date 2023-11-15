@@ -20,7 +20,7 @@ public class NinjaController {
         return ninjaService.cadastrarNinja(ninja);
     }
 
-    @GetMapping("/ninjas/id={id}")
+    @GetMapping("/ninjas/{id}")
     public ResponseEntity<Optional<Ninja>> retornarNinjaPorId(@PathVariable Long id) {
         return ninjaService.retornarNinjaPorId(id);
     }
