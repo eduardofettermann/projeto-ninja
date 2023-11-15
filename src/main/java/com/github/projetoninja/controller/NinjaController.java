@@ -30,8 +30,8 @@ public class NinjaController {
         return ninjaService.retornarTodosNinjas();
     }
 
-    @PutMapping("/ninjas/alterar={id}")
-    public ResponseEntity<Ninja> alterarNinja(@PathVariable(value = "id") Long id,
+    @PutMapping("/ninjas/alterar")
+    public ResponseEntity<Ninja> alterarNinja(@RequestParam(value = "id") Long id,
                                               @RequestBody Ninja ninjaAtualizado) {
         ninjaService.alterarNinjaPeloId(id, ninjaAtualizado);
         return ninjaAtualizado != null & ninjaService.retornarNinjaPorId(id) != null ?
