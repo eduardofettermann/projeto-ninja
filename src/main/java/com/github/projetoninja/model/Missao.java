@@ -1,16 +1,14 @@
 package com.github.projetoninja.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "missoes")
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Missao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
