@@ -10,27 +10,27 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/ninjas")
+@RequestMapping("/projetoninja")
 public class NinjaController {
     @Autowired
     private NinjaService ninjaService;
 
-    @PostMapping("/cadastrar")
+    @PostMapping("/ninjas/cadastrar")
     public Ninja cadastrarNinja(@RequestBody Ninja ninja) {
         return ninjaService.cadastrarNinja(ninja);
     }
 
-    @GetMapping("/id={id}")
+    @GetMapping("/ninjas/id={id}")
     public ResponseEntity<Optional<Ninja>> retornarNinjaPorId(@PathVariable Long id) {
         return ninjaService.retornarNinjaPorId(id);
     }
 
-    @GetMapping
+    @GetMapping("/ninjas")
     public List<Ninja> retornarNinjas() {
         return ninjaService.retornarTodosNinjas();
     }
 
-    @PutMapping("/alterar={id}")
+    @PutMapping("/ninjas/alterar={id}")
     public ResponseEntity<Ninja> alterarNinja(@PathVariable(value = "id") Long id,
                                               @RequestBody Ninja ninjaAtualizado) {
         ninjaService.alterarNinjaPeloId(id, ninjaAtualizado);
