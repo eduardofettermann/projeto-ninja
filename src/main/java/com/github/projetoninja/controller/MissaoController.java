@@ -19,7 +19,7 @@ public class MissaoController {
         return missaoService.cadastrarMissao(missao);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id={id}")
     public Optional<Missao> retornarMissaoPorId(@PathVariable Long id){
         return missaoService.retornarMissaoPeloId(id);
     }
