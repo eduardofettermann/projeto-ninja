@@ -15,7 +15,7 @@ public class NinjaController {
     @Autowired
     private NinjaService ninjaService;
 
-    @PostMapping
+    @PostMapping("/cadastrar")
     public Ninja cadastrarNinja(@RequestBody Ninja ninja) {
         return ninjaService.cadastrarNinja(ninja);
     }
