@@ -20,7 +20,7 @@ public class NinjaController {
         return ninjaService.cadastrarNinja(ninja);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id={id}")
     public Optional<Ninja> retornarNinjaPorId(@PathVariable Long id) {
         return ninjaService.retornarNinjaPorId(id);
     }
