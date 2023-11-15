@@ -34,7 +34,7 @@ public class NinjaController {
     public ResponseEntity<Ninja> alterarNinja(@PathVariable(value = "id") Long id,
                                               @RequestBody Ninja ninjaAtualizado) {
         ninjaService.alterarNinjaPeloId(id, ninjaAtualizado);
-        return ninjaAtualizado != null ?
+        return ninjaAtualizado != null & ninjaService.retornarNinjaPorId(id) != null ?
                 ResponseEntity.ok(ninjaAtualizado) :
                 ResponseEntity.notFound().build();
     }
