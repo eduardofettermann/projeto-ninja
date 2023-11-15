@@ -21,7 +21,7 @@ public class NinjaController {
     }
 
     @GetMapping("/id={id}")
-    public Optional<Ninja> retornarNinjaPorId(@PathVariable Long id) {
+    public ResponseEntity<Optional<Ninja>> retornarNinjaPorId(@PathVariable Long id) {
         return ninjaService.retornarNinjaPorId(id);
     }
 
