@@ -33,14 +33,20 @@ public class MissaoService {
         }
         return null;
     }
-// Essa parte está comentada pois irei verificar se funciona após criar os Controllers
-//    public List<Missao> retornarTodasMissoesPorDificuldade() {
-//        Sort.Order ordenadorPorClassificacao = new Sort.Order(Sort.Direction.ASC, "classificacao");
-//        return missaoRepository.findAll(Sort.by(ordenadorPorClassificacao));
-//    }
-//
-//    public List<Missao> retornarTodasMissoesPorStatus() {
-//        Sort.Order ordenadorPorStatus = new Sort.Order(Sort.Direction.ASC, "concluida");
-//        return missaoRepository.findAll(Sort.by(ordenadorPorStatus));
-//    }
+    public List<Missao> retornarTodasMissoesPorDificuldade(String parametro) {
+        List<Missao> missoes = missaoRepository.findAll();
+        Sort.Order filtro;
+        switch (parametro){
+            case ("classificacao"), ("concluida") -> {
+                filtro = new Sort.Order(Sort.Direction.ASC, parametro);
+                missoes = missaoRepository.findAll(Sort.by(filtro));
+            }
+         }
+        return missoes;
+    }
+
+    public List<Missao> retornarTodasMissoesPorStatus() {
+        Sort.Order ordenadorPorStatus = new Sort.Order(Sort.Direction.ASC, "concluida");
+        return missaoRepository.findAll(Sort.by(ordenadorPorStatus));
+    }
 }
