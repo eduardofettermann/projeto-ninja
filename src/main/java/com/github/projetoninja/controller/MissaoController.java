@@ -33,4 +33,9 @@ public class MissaoController {
     public Missao alterarMissao(@RequestParam(value = "id") Long id ,@RequestBody Missao missaoAlterada){
         return missaoService.alterarMissao(id,missaoAlterada);
     }
+
+    @GetMapping("/missoes")
+    public List<Missao> retornarMissaoPorFiltro(@RequestParam(value = "filtrar") String parametro){
+        return  missaoService.retornarTodasMissoesPorDificuldade(parametro);
+    }
 }
