@@ -4,6 +4,7 @@ import com.github.projetoninja.model.Missao;
 import com.github.projetoninja.repository.MissaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,10 +23,6 @@ public class MissaoService {
         return missaoRepository.findById(id);
     }
 
-    public List<Missao> retornarTodasMissoes() {
-        return missaoRepository.findAll();
-    }
-
     public Missao alterarMissao(Long id, Missao missaoAlterada) {
         if (missaoRepository.existsById(id)) {
             missaoAlterada.setIdDaMissao(id);
@@ -33,15 +30,19 @@ public class MissaoService {
         }
         return null;
     }
-    public List<Missao> retornarTodasMissoesPorFiltro(String parametro) {
-        List<Missao> missoes = missaoRepository.findAll();
+
+    public List<Missao> retornarMissoes(){
+        return missaoRepository.findAll();
+    }
+
+    public ResponseEntity<List<Missao>> retornarMissoesPorFiltro(String parametro) {
+        ResponseEntity<List<Missao>> respostaDaRequisicao;
         Sort.Order filtro;
-        switch (parametro){
-            case ("classificacao"), ("concluida") -> {
-                filtro = new Sort.Order(Sort.Direction.ASC, parametro);
-                missoes = missaoRepository.findAll(Sort.by(filtro));
-            }
-         }
-        return missoes;
+        if (parametro.equalsIgnoreCase("classificacao") || parametro.equalsIgnoreCase("concluida")) {
+            filtro = new Sort.Order(Sort.Direction.ASC, parametro);
+            List<Missao> missoes = missaoRepository.findAll(Sort.by(filtro));
+            respostaDaRequisicao = ResponseEntity.ok(missoes);
+        } else respostaDaRequisicao = ResponseEntity.notFound().build();
+        return respostaDaRequisicao;
     }
 }
