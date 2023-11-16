@@ -36,6 +36,6 @@ public class MissaoController {
 
     @GetMapping("/missoes")
     public List<Missao> retornarMissaoPorFiltro(@RequestParam(value = "filtrar") String parametro){
-        return  missaoService.retornarTodasMissoesPorDificuldade(parametro);
+        return missaoService.retornarTodasMissoesPorFiltro(parametro);
     }
 }
