@@ -33,7 +33,7 @@ public class MissaoService {
         }
         return null;
     }
-    public List<Missao> retornarTodasMissoesPorDificuldade(String parametro) {
+    public List<Missao> retornarTodasMissoesPorFiltro(String parametro) {
         List<Missao> missoes = missaoRepository.findAll();
         Sort.Order filtro;
         switch (parametro){
@@ -43,10 +43,5 @@ public class MissaoService {
             }
          }
         return missoes;
-    }
-
-    public List<Missao> retornarTodasMissoesPorStatus() {
-        Sort.Order ordenadorPorStatus = new Sort.Order(Sort.Direction.ASC, "concluida");
-        return missaoRepository.findAll(Sort.by(ordenadorPorStatus));
     }
 }
